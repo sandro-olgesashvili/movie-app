@@ -102,7 +102,7 @@ img {
     transform: scale(0);
     opacity: 0;
     transform-origin: bottom;
-    transition: all 0.3s ease-in;
+    transition: transform 0.3s, opacity 0.3s ease-in;
     font-weight: 300;
 }
 
@@ -115,4 +115,31 @@ img {
 .movie:hover .overview {
     opacity: 1;
     transform: scale(1);
+}
+
+
+.btn-cont {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    padding: 4rem;
+}
+
+
+.btn {
+    padding: 0.5rem 2rem;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background: #4b6cb7;
+    background: -webkit-linear-gradient(to bottom, #182848, #4b6cb7); 
+    background: linear-gradient(to bottom, #182848, #4b6cb7); 
+    
+    transition: all 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.98);
 }

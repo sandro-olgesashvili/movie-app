@@ -6,9 +6,18 @@ const IMGPATH = "https://image.tmdb.org/t/p/w1280";
 const SEARCHAPI =
     "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
 
+let countPage = 1;
+
+
+
+
 const main = document.getElementById('main')
 const form = document.getElementById('form')
 const search = document.getElementById('search')
+const btnNext = document.getElementById('btn-next')
+const btnPrev = document.getElementById('btn-prev')
+
+
 
 getMovies(APIURL) 
 
@@ -75,5 +84,39 @@ form.addEventListener('submit', e => {
         getMovies(SEARCHAPI + searchTerm)
         
         search.value = ''
+    }
+})
+
+
+
+
+btnNext.addEventListener('click', async () => {
+
+
+    countPage++
+
+    
+    const res = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=${countPage}`)
+
+    const data = await res.json()
+
+    showMovies(data.results);
+})
+
+btnPrev.addEventListener('click', async () => {
+
+
+    countPage--
+
+    if(countPage <= 0 ) {
+        getMovies(APIURL)
+        countPage = 1
+
+    } else {
+        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=${countPage}`)
+
+        const data = await res.json()
+
+        showMovies(data.results);
     }
 })
