@@ -1,5 +1,5 @@
 const APIURL =
-    "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
+    "https://api.themoviedb.org/3/movie/upcoming?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&page=1";
 
 const IMGPATH = "https://image.tmdb.org/t/p/w1280";
 
@@ -40,16 +40,16 @@ function showMovies (movies) {
     movies.forEach(movie => {
         if(movie.poster_path !== null ) {
 
-            const {poster_path, original_title, vote_average, overview } = movie
+            const {poster_path, original_title, release_date, overview } = movie
     
             const movieEl = document.createElement('div');
             movieEl.classList.add('movie')
     
             movieEl.innerHTML = `
                 <img src="${IMGPATH + poster_path}" alt="${original_title}">
-                <div class="movie-info">
+                <div class="movie-info direction">
                     <h3>${original_title}</h3>
-                    <span class="${getClassByRate(vote_average)}">${vote_average}</span>
+                    <span class="green mg-tp">Release date: ${release_date}</span>
                 </div>
 
                 <div class="overview"><h4>Overview: </h4>
@@ -63,15 +63,6 @@ function showMovies (movies) {
 
 }
 
-function getClassByRate(vote) {
-    if(vote >= 8) {
-        return 'green'
-    } else if (vote >=5) {
-        return 'orange'
-    } else {
-        return 'red'
-    }
-}
 
 
 form.addEventListener('submit', e => {
@@ -98,7 +89,7 @@ btnNext.addEventListener('click', async () => {
     document.documentElement.scrollTop = 0
 
     
-    const res = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=${countPage}`)
+    const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&page=${countPage}`)
 
     const data = await res.json()
 
@@ -117,7 +108,7 @@ btnPrev.addEventListener('click', async () => {
         countPage = 1
 
     } else {
-        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=${countPage}`)
+        const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&page=${countPage}`)
 
         const data = await res.json()
 

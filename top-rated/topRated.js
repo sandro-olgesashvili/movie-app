@@ -1,5 +1,6 @@
+
 const APIURL =
-    "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
+    "https://api.themoviedb.org/3/movie/top_rated?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&page=1";
 
 const IMGPATH = "https://image.tmdb.org/t/p/w1280";
 
@@ -95,10 +96,8 @@ btnNext.addEventListener('click', async () => {
 
     countPage++
 
-    document.documentElement.scrollTop = 0
-
     
-    const res = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=${countPage}`)
+    const res = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&page=${countPage}`)
 
     const data = await res.json()
 
@@ -110,14 +109,12 @@ btnPrev.addEventListener('click', async () => {
 
     countPage--
 
-    document.documentElement.scrollTop = 0
-
     if(countPage <= 0 ) {
         getMovies(APIURL)
         countPage = 1
 
     } else {
-        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=${countPage}`)
+        const res = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=04c35731a5ee918f014970082a0088b1&language=en-US&page=${countPage}`)
 
         const data = await res.json()
 
