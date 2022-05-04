@@ -13,7 +13,7 @@ body {
 }
 
 
-header {
+.header {
     background-color:#373b69 ;
     padding: 1.5rem; 
     display: flex;
@@ -21,22 +21,22 @@ header {
     align-items: center;
 }
 
-header ul {
+.header ul {
     list-style: none;
     display: flex;
     gap: 4rem;
     font-size: 1.5rem;
 }
-header ul li {
+.header ul li {
     position: relative;
 }
 
-header ul li a {
+.header ul li a {
     color: #eee;
     text-decoration: none;
 }
 
-header ul li::before{
+.header ul li::before{
     content: '';
     position: absolute;
     left: 0;
@@ -48,7 +48,7 @@ header ul li::before{
     transform:scale(0);
     transition: all 0.5s;
 }
-header ul li::after{
+.header ul li::after{
     content: '';
     position: absolute;
     left: 0;
@@ -62,13 +62,13 @@ header ul li::after{
 }
 
 
-header ul li.active::before,
-header ul li.active::after {
+.header ul li.active::before,
+.header ul li.active::after {
     transform: scale(1);
 }
 
-header ul li:hover::after,
-header ul li:hover::before{
+.header ul li:hover::after,
+.header ul li:hover::before{
     transform: scale(1);
 }
 
