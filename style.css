@@ -77,7 +77,7 @@ body {
     padding: 0.5rem 1rem ;
     background-color: transparent;
     border-radius: 50px;
-    border: 2px solid #22254b;
+    border: 2px solid #0074D9;
     font-size: 1rem;
     color: #fff;
 }
@@ -86,7 +86,7 @@ body {
 }
 .search:focus {
     outline: none;
-    background-color: #22254b;
+    background-color: #0074D9;
 }
 
 main {
@@ -125,7 +125,7 @@ main {
 }
 
 .movie-info span {
-    background-color: #22254b;
+    background-color: #0074D9;
     border-radius: 3px;
     padding: 0.5rem;
     font-weight: bold;
